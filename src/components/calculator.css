@@ -1,0 +1,132 @@
+/* ===== Design tokens =====
+   A "paper tape" calculator: warm cream display like an adding-machine
+   receipt, deep teal for operations, dusty rose for the function row,
+   slate keys for digits. Monospace display face nods to ledger figures.
+*/
+.calc-wrapper {
+  --ink: #2b2d33;
+  --slate: #3c3f47;
+  --slate-hover: #4a4e58;
+  --paper: #ede6d6;
+  --paper-line: #d8cdb4;
+  --teal: #1f7a6c;
+  --teal-hover: #26937f;
+  --rose: #9c6b7c;
+  --rose-hover: #b17e90;
+  --cream-text: #f4efe4;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 24px;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.calc {
+  width: 100%;
+  max-width: 320px;
+  background: var(--ink);
+  border-radius: 28px;
+  padding: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+/* Display: warm paper tone, monospace digits, ledger-style top rule */
+.calc-display {
+  background: var(--paper);
+  border-radius: 18px;
+  padding: 28px 22px 20px;
+  margin-bottom: 16px;
+  text-align: right;
+  border-top: 3px dashed var(--paper-line);
+  overflow: hidden;
+}
+
+.calc-display__value {
+  font-family: "JetBrains Mono", "Courier New", monospace;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* Keypad grid */
+.calc-keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+/* Base button */
+.calc-btn {
+  height: 62px;
+  border: none;
+  border-radius: 16px;
+  font-size: 1.35rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.08s ease, background-color 0.15s ease;
+  color: var(--cream-text);
+  background: var(--slate);
+}
+
+.calc-btn:hover {
+  background: var(--slate-hover);
+}
+
+.calc-btn:active {
+  transform: scale(0.94);
+}
+
+.calc-btn--wide {
+  grid-column: span 2;
+  justify-content: flex-start;
+  padding-left: 26px;
+}
+
+/* Function row: C, +/-, % */
+.calc-btn--function {
+  background: var(--rose);
+  color: var(--cream-text);
+}
+
+.calc-btn--function:hover {
+  background: var(--rose-hover);
+}
+
+/* Operators: ÷ × − + = */
+.calc-btn--operator {
+  background: var(--teal);
+  color: var(--cream-text);
+  font-size: 1.5rem;
+}
+
+.calc-btn--operator:hover {
+  background: var(--teal-hover);
+}
+
+/* Highlighted state while an operator is pending */
+.calc-btn--active {
+  background: var(--paper);
+  color: var(--teal);
+}
+
+.calc-btn--active:hover {
+  background: var(--paper);
+}
+
+@media (max-width: 380px) {
+  .calc-btn {
+    height: 54px;
+    font-size: 1.15rem;
+  }
+  .calc-display__value {
+    font-size: 2.25rem !important;
+  }
+}
