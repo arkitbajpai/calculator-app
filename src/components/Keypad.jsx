@@ -14,7 +14,7 @@ export default function Keypad({
   return (
     <div className="calc-keypad">
       <Button variant="function" onClick={clearAll}>C</Button>
-      <Button variant="function" onClick={toggleSign}>++/--</Button>
+      <Button variant="function" onClick={toggleSign}>+/-</Button>
       <Button variant="function" onClick={inputPercent}>%</Button>
       <Button variant="operator" active={activeOp === "÷"} onClick={() => performOperation("÷")}>÷</Button>
 
